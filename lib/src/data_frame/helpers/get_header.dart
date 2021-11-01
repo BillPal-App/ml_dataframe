@@ -8,15 +8,15 @@ Iterable<String> getHeader(
       Iterable<String> predefinedHeader = const [],
     ]
     ) {
-  if (predefinedHeader.isNotEmpty) {
+  if (predefinedHeader?.isNotEmpty == true) {
     return predefinedHeader.take(columnsNum);
   }
 
-  if (rawActualHeader.isNotEmpty) {
+  if (rawActualHeader?.isNotEmpty == true) {
     return rawActualHeader.map((name) => name.trim());
   }
 
   return count(0)
       .take(columnsNum)
-      .map((index) => '$autoHeaderPrefix$index');
+      .map((index) => '${autoHeaderPrefix}${index}');
 }

@@ -98,13 +98,13 @@ abstract class DataFrame implements Serializable {
   factory DataFrame.fromSeries(Iterable<Series> series) =>
       DataFrameImpl.fromSeries(
         series,
-        const NumericalConverterImpl(),
+        const NumericalConverterImpl(false),
       );
 
   factory DataFrame.fromMatrix(
       Matrix matrix,
       {
-        Iterable<String> header = const [],
+        Iterable<String> header,
         String autoHeaderPrefix = defaultHeaderPrefix,
         Iterable<int> columns = const [],
         Iterable<int> discreteColumns = const [],
@@ -169,7 +169,7 @@ abstract class DataFrame implements Serializable {
       {
         String fieldDelimiter = defaultFieldDelimiter,
         String textDelimiter = defaultTextDelimiter,
-        String? textEndDelimiter,
+        String textEndDelimiter,
         String eol = '\n',
         bool headerExists = true,
         Iterable<String> header = const [],
